@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list-all
+    silent: true
+
+  shell:
+    desc: Open an interactive IPython session
+    cmds:
+      - uv run ipython
