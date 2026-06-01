@@ -12,6 +12,7 @@ dependencies = [
     "ipython>=9.13.0",
     "click>=8.3.3",
     "allure-pytest>=2.13",
+    "jsonatapy>=2.1.4",
 ]
 
 [tool.ruff]
@@ -34,7 +35,7 @@ testpaths = ["tests"]
 addopts = "-v"
 markers = [
     "online: test hits a live device via eAPI",
-    "offline: test reads from data/api_responses/ instead of a device",
+    "slow: test is slow to run; selectable or skippable via -m",
     "bgp: BGP-specific validation tests",
     "intended_vs_operational: compares intended state to running state",
 ]

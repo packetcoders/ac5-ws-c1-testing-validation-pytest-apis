@@ -10,6 +10,7 @@ dependencies = [
     { name = "allure-pytest" },
     { name = "click" },
     { name = "ipython" },
+    { name = "jsonatapy" },
     { name = "pytest" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
@@ -22,6 +23,7 @@ requires-dist = [
     { name = "allure-pytest", specifier = ">=2.13" },
     { name = "click", specifier = ">=8.3.3" },
     { name = "ipython", specifier = ">=9.13.0" },
+    { name = "jsonatapy", specifier = ">=2.1.4" },
     { name = "pytest", specifier = ">=8.0" },
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "pyyaml", specifier = ">=6.0" },
@@ -273,6 +275,23 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/46/b7/a3635f6a2d7cf5b5dd98064fc1d5fbbafcb25477bcea204a3a92145d158b/jedi-0.20.0.tar.gz", hash = "sha256:c3f4ccbd276696f4b19c54618d4fb18f9fc24b0aef02acf704b23f487daa1011", size = 3119416, upload-time = "2026-05-01T23:38:47.814Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9a/93/242e2eab5fe682ffcb8b0084bde703a41d51e17ee0f3a31ff0d9d813620a/jedi-0.20.0-py2.py3-none-any.whl", hash = "sha256:7bdd9c2634f56713299976f4cbd59cb3fa92165cc5e05ea811fb253480728b67", size = 4884812, upload-time = "2026-05-01T23:38:43.919Z" },
+]
+
+[[package]]
+name = "jsonatapy"
+version = "2.1.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ee/b9/40f731ed8ccf859e253db84ea438ec1a7ba8ffa99fb5a773292df214df61/jsonatapy-2.1.4.tar.gz", hash = "sha256:2cb16c710b631ac3a0d55505f01401cf8e12171554c1c48860a1685a69c860c8", size = 166881, upload-time = "2026-03-22T16:13:51.676Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cc/f0/1500b291c3d722e216dac6c958a119c355dd8861b8a8f2c9b8ede1e35420/jsonatapy-2.1.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:98b05565e2b6873c02082353dbd140519969b36d5a25db9ed860ed03b4fe85ad", size = 1137086, upload-time = "2026-03-22T16:13:35.852Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/56/37c9633c00af0284ee57592ab371fa58faa47290cf35108a3678e41bd232/jsonatapy-2.1.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d019ab065f3bc8f37efef0ddac7adfc59c2ba8541a8eb85252febed1c5501a8e", size = 1230955, upload-time = "2026-03-22T16:13:37.783Z" },
+    { url = "https://files.pythonhosted.org/packages/2c/03/705fa27c4bf7d1457bced61f3c66c6ebf645c339d20498af6d7ef12f5ede/jsonatapy-2.1.4-cp311-cp311-win_amd64.whl", hash = "sha256:6fd1cd74dda36e2e7f0be4f2cfc0affa7aa698b840f28d1562ea32a28402c068", size = 1173044, upload-time = "2026-03-22T16:13:39.432Z" },
+    { url = "https://files.pythonhosted.org/packages/87/8b/24e6476a8571df5592d7d944c155161b7ac9736648a38790c1b4e3cdd795/jsonatapy-2.1.4-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dbbde9ba01c60c2b5a438671f5619d3e3b6213197a3eaf552f00329a054c09fb", size = 1136832, upload-time = "2026-03-22T16:13:41.376Z" },
+    { url = "https://files.pythonhosted.org/packages/87/ae/d4fed2e475b4ab931be6eaa32e465fb538d88613619d9ed49529cd2e19fe/jsonatapy-2.1.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ff8065c9658317fa140ea681826f89e9be60d11d3364d6aa3644db311f65efb4", size = 1231224, upload-time = "2026-03-22T16:13:43.199Z" },
+    { url = "https://files.pythonhosted.org/packages/6f/42/f13d225afe62f05cb2ba8887605e5ca7ceb74513122814951391995845ce/jsonatapy-2.1.4-cp312-cp312-win_amd64.whl", hash = "sha256:066865c27481b2ab9df7f1805cc80350e8f39f7faed03027c42d22deee75aed1", size = 1172280, upload-time = "2026-03-22T16:13:44.975Z" },
+    { url = "https://files.pythonhosted.org/packages/d9/e1/b5051166e2ec929e28e17d8fcc7f4aeca8475fbcf3907201be13ce7b2738/jsonatapy-2.1.4-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:57bf9b062b1bb9f9041cfb33a673e7c1d740f223d24b30ce33c496a7916f28c9", size = 1136535, upload-time = "2026-03-22T16:13:46.578Z" },
+    { url = "https://files.pythonhosted.org/packages/47/2d/5e855949e880197bbafaf6fb67331b97d89a78cb6222cd4fb54bd4f895b1/jsonatapy-2.1.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e06d2a1e78a87f031568f8a07adb136e2bb489be4c252da2841be5aa2aa1c92d", size = 1230819, upload-time = "2026-03-22T16:13:48.237Z" },
+    { url = "https://files.pythonhosted.org/packages/f1/c0/aaf5617f3159f4e696073007da834e0b7f4add8c87c9377bdc398694b531/jsonatapy-2.1.4-cp313-cp313-win_amd64.whl", hash = "sha256:8bf1277d160020e16863b4bfd0d76b967a797b33dcc5990a1847c4efac1cb25c", size = 1172041, upload-time = "2026-03-22T16:13:50.148Z" },
 ]
 
 [[package]]

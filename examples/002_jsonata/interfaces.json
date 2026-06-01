@@ -1,0 +1,37 @@
+{
+  "interfaces": {
+    "Ethernet1": {
+      "name": "Ethernet1",
+      "lineProtocolStatus": "up",
+      "interfaceCounters": {
+        "inDiscards": 0,
+        "inputErrorsDetail": {
+          "runtFrames": 0, "rxPause": 0, "fcsErrors": 0,
+          "alignmentErrors": 0, "giantFrames": 0, "symbolErrors": 0
+        }
+      }
+    },
+    "Ethernet2": {
+      "name": "Ethernet2",
+      "lineProtocolStatus": "up",
+      "interfaceCounters": {
+        "inDiscards": 12,
+        "inputErrorsDetail": {
+          "runtFrames": 5, "rxPause": 0, "fcsErrors": 22,
+          "alignmentErrors": 3, "giantFrames": 1, "symbolErrors": 6
+        }
+      }
+    },
+    "Ethernet3": {
+      "name": "Ethernet3",
+      "lineProtocolStatus": "down",
+      "interfaceCounters": {
+        "inDiscards": 0,
+        "inputErrorsDetail": {
+          "runtFrames": 0, "rxPause": 0, "fcsErrors": 0,
+          "alignmentErrors": 0, "giantFrames": 0, "symbolErrors": 0
+        }
+      }
+    }
+  }
+}

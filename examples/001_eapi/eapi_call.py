@@ -1,9 +1,10 @@
-"""Example 1: Call eAPI with raw `requests` to retrieve facts.
+"""Example: call eAPI on your own device with raw `requests`.
 
-A complete worked example for Workbook 2, Exercise 1. Run from the workshop
-root with a populated .env:
+The sample REST API in basic_rest.py handed back a flat list. A real device
+returns a nested JSON-RPC result instead, which is what motivates the JSONata
+reshaping in 002_jsonata/. Run from the workshop root with a populated .env:
 
-    uv run examples/002_device_apis/1_eapi_call.py
+    uv run examples/001_eapi/eapi_call.py
 """
 
 import os
@@ -14,7 +15,7 @@ import urllib3
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[2]
-load_dotenv(ROOT / "final-project" / ".env")
+load_dotenv(ROOT / ".env")
 
 # The lab certs are self-signed, so requests will warn on every call. Silence
 # the warning explicitly so example output stays readable.
