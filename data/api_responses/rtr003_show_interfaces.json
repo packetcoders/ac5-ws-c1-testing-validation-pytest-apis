@@ -1,0 +1,22 @@
+{
+  "interfaces": {
+    "Loopback0": {
+      "name": "Loopback0",
+      "description": "",
+      "lineProtocolStatus": "up",
+      "interfaceStatus": "connected",
+      "interfaceAddress": [
+        {"primaryIp": {"address": "10.255.0.3", "maskLen": 32}}
+      ]
+    },
+    "Ethernet1": {
+      "name": "Ethernet1",
+      "description": "Link to rtr004",
+      "lineProtocolStatus": "up",
+      "interfaceStatus": "connected",
+      "interfaceAddress": [
+        {"primaryIp": {"address": "10.0.34.1", "maskLen": 30}}
+      ]
+    }
+  }
+}

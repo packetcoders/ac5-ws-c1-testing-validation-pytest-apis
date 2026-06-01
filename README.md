@@ -1,7 +1,7 @@
-# AutoCon 5 — Workshop C1: Testing and Validation with Pytest and APIs
+# AutoCon 5: Workshop C1: Testing and Validation with Pytest and APIs
 
 This repository contains examples and workbooks used in the AutoCon 5 workshop:
-> **AutoCon 5 — Workshop C1**
+> **AutoCon 5: Workshop C1**
 > **Testing and Validation with Pytest and APIs**
 
 ## Session Overview
@@ -30,11 +30,11 @@ By the end of the session you will have built a testing framework using Pytest a
 
 - Workbook 001: Pytest Fundamentals
 - Workbook 002: Working with Device REST APIs
-- Workbook 003: Building a Validation Suite for Intended and Operational State
+- Workbook 003: Building a Validation Suite
 
 ## Lab Environment
 
-All exercises are completed in a browser-based lab. Each attendee is automatically assigned a dedicated environment with workbooks, sample data, and live device topology pre-loaded — no local install required.
+All exercises are completed in a browser-based lab. Each attendee is automatically assigned a dedicated environment with workbooks, sample data, and a live device topology pre-loaded, no local install required.
 
 ## Terms and Conditions
 

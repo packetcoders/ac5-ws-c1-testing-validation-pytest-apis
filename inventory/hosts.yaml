@@ -1,0 +1,74 @@
+---
+# Per-host intended state. The same Nornir-shaped inventory introduced in
+# Session B1, with the data the validation suite checks against.
+#
+# `data` holds the intended state. The eAPI client reads the running state,
+# and the tests compare the two.
+
+rtr001:
+  hostname: 172.29.163.101
+  groups:
+    - eos
+  data:
+    loopback_ip: 10.255.0.1/32
+    interfaces:
+      - name: Ethernet1
+        description: Link to rtr002
+        ip_address: 10.0.12.1/30
+        enabled: true
+    bgp:
+      local_as: 65001
+      peers:
+        - peer_ip: 10.0.12.2
+          remote_as: 65002
+
+rtr002:
+  hostname: 172.29.163.102
+  groups:
+    - eos
+  data:
+    loopback_ip: 10.255.0.2/32
+    interfaces:
+      - name: Ethernet1
+        description: Link to rtr001
+        ip_address: 10.0.12.2/30
+        enabled: true
+    bgp:
+      local_as: 65002
+      peers:
+        - peer_ip: 10.0.12.1
+          remote_as: 65001
+
+rtr003:
+  hostname: 172.29.163.103
+  groups:
+    - eos
+  data:
+    loopback_ip: 10.255.0.3/32
+    interfaces:
+      - name: Ethernet1
+        description: Link to rtr004
+        ip_address: 10.0.34.1/30
+        enabled: true
+    bgp:
+      local_as: 65003
+      peers:
+        - peer_ip: 10.0.34.2
+          remote_as: 65004
+
+rtr004:
+  hostname: 172.29.163.104
+  groups:
+    - eos
+  data:
+    loopback_ip: 10.255.0.4/32
+    interfaces:
+      - name: Ethernet1
+        description: Link to rtr003
+        ip_address: 10.0.34.2/30
+        enabled: true
+    bgp:
+      local_as: 65004
+      peers:
+        - peer_ip: 10.0.34.1
+          remote_as: 65003

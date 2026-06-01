@@ -1,0 +1,23 @@
+{
+  "vrfs": {
+    "default": {
+      "routerId": "10.255.0.1",
+      "asn": "65001",
+      "peers": {
+        "10.0.12.2": {
+          "msgSent": 142,
+          "inMsgQueue": 0,
+          "prefixReceived": 4,
+          "upDownTime": 1716552000.0,
+          "version": 4,
+          "msgReceived": 140,
+          "prefixAccepted": 4,
+          "peerState": "Established",
+          "outMsgQueue": 0,
+          "underMaintenance": false,
+          "asn": "65002"
+        }
+      }
+    }
+  }
+}

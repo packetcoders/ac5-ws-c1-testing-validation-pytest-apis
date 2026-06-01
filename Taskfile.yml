@@ -11,3 +11,18 @@ tasks:
     desc: Open an interactive IPython session
     cmds:
       - uv run ipython
+
+  test:
+    desc: Run the full validation suite against the live lab
+    cmds:
+      - uv run pytest tests/ -v
+
+  test-offline:
+    desc: Run the validation suite against captured API responses
+    cmds:
+      - uv run pytest tests/ -v --offline
+
+  test-bgp:
+    desc: Run only the BGP-related tests
+    cmds:
+      - uv run pytest tests/ -v -m bgp

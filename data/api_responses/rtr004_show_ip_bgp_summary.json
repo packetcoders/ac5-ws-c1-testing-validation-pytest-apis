@@ -1,0 +1,17 @@
+{
+  "vrfs": {
+    "default": {
+      "routerId": "10.255.0.4",
+      "asn": "65004",
+      "peers": {
+        "10.0.34.1": {
+          "prefixReceived": 4,
+          "prefixAccepted": 4,
+          "peerState": "Established",
+          "asn": "65003",
+          "version": 4
+        }
+      }
+    }
+  }
+}

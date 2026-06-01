@@ -50,6 +50,13 @@ htmlcov/
 coverage.xml
 *.cover
 
+# Allure reports
+allure-results/
+allure-report/
+
 # mypy / ruff
 .mypy_cache/
 .ruff_cache/
+
+# Logs
+*.log

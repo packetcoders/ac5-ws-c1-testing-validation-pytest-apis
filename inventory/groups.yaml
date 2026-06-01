@@ -1,0 +1,11 @@
+---
+# Group-level inventory: values shared by every host in the group.
+#
+# `platform` selects the eAPI driver. Anything under `data` is inherited by
+# each host in the group and is reachable through the intended_state fixture.
+
+eos:
+  platform: eos
+  data:
+    transport: https
+    eapi_port: 443
