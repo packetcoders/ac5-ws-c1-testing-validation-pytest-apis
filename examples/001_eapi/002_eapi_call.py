@@ -13,15 +13,23 @@ from pathlib import Path
 import requests
 import urllib3
 from dotenv import load_dotenv
+from rich import print as rprint
 
-ROOT = Path(__file__).resolve().parents[2]
-load_dotenv(ROOT / ".env")
+load_dotenv()
+
+DEVICE_USERNAME = os.getenv("DEVICE_USERNAME")
+DEVICE_PASSWORD = os.getenv("DEVICE_PASSWORD")
+HOST = f"172.29.165.{os.getenv('STUDENT_ID')}"
+
+
+load_dotenv(".env")
 
 # The lab certs are self-signed, so requests will warn on every call. Silence
 # the warning explicitly so example output stays readable.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-URL = "https://172.29.163.101/command-api"
+URL = f"https://{HOST}/command-api"
+
 PAYLOAD = {
     "jsonrpc": "2.0",
     "method": "runCmds",
@@ -40,7 +48,6 @@ response.raise_for_status()
 
 body = response.json()
 # body["result"] is a list, one entry per command. show version returns a
-# dict of facts.
-[version] = body["result"]
-print(version["hostname"], version["version"])
-# rtr001 4.28.0F
+
+rprint(body)
+rprint(body["result"][0]["version"])

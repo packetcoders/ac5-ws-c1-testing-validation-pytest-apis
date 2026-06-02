@@ -1,0 +1,8 @@
+status: up
+runt_frames: 0
+rx_pause: 0
+fcs_errors: 0
+alignment_errors: 0
+giant_frames: 0
+symbol_errors: 0
+in_discards: 0

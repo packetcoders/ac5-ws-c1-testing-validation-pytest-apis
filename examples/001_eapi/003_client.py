@@ -1,5 +1,4 @@
-"""A small eAPI client, provided for you to read and reuse.
-"""
+"""A small eAPI client, provided for you to read and reuse."""
 
 import requests
 import urllib3
@@ -36,3 +35,21 @@ class EApiClient:
         response.raise_for_status()
         # result is a list, one entry per command in the same order as cmds.
         return response.json()["result"]
+
+
+if __name__ == "__main__":
+    import os
+
+    from dotenv import load_dotenv
+    from rich import print as rprint
+
+    load_dotenv()
+
+    DEVICE_USERNAME = os.getenv("DEVICE_USERNAME")
+    DEVICE_PASSWORD = os.getenv("DEVICE_PASSWORD")
+    HOST = f"172.29.165.{os.getenv('STUDENT_ID')}"
+
+    # Example usage: run "show version" and print the hostname and version.
+    client = EApiClient(HOST, DEVICE_USERNAME, DEVICE_PASSWORD)
+    response = client.run(["show interfaces"])
+    rprint(response)

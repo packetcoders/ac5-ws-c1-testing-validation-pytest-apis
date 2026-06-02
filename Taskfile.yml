@@ -26,3 +26,15 @@ tasks:
     desc: Run only the BGP-related tests
     cmds:
       - uv run pytest tests/ -v -m bgp
+
+  report:
+    desc: Run the reporting example and build a single-file Allure HTML report
+    dir: examples
+    cmds:
+      - rm -rf allure-results allure-report
+      # ignore_error so the report still builds when tests fail (pytest exits non-zero)
+      - cmd: uv run pytest 003_pytest/005_reporting --alluredir=allure-results
+        ignore_error: true
+      - allure generate allure-results -o allure-report --single-file --clean
+      - cmd: echo "Report ready -> examples/allure-report/index.html"
+        silent: true
