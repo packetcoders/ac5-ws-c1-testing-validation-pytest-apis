@@ -1,8 +1,11 @@
-"""Shared fixtures for the tests in this folder.
+"""Fixture scope: how often does a fixture run?
 
-A fixture in `conftest.py` is available to every test in its directory tree
-without importing it. Both test files here name `interfaces` as a parameter
-and pytest injects this return value.
+The default scope is `function`, so `interfaces` is rebuilt for every test that
+names it. Swap the commented `scope="session"` decorator in and the setup runs
+once for the whole session instead. Run with -s from the workshop root to watch
+the "Setting up" print fire:
+
+    uv run pytest examples/003_pytest/002_fixtures/002_scope/ -v -s
 """
 
 import pytest

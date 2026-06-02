@@ -4,7 +4,7 @@ Before touching a device, see a request and response end to end against a
 public sample endpoint. The endpoint returns an already-flat list of
 interface records, so parsing is a plain loop. Run from the workshop root:
 
-    uv run examples/001_eapi/basic_rest.py
+    uv run examples/001_eapi/001_basic_rest.py
 """
 
 import requests

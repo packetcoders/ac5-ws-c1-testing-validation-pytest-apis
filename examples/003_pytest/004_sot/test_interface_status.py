@@ -1,9 +1,10 @@
-"""Fixtures in action: assert every interface is up.
+"""Source of truth: assert status matches expected_state.yaml.
 
-The `interfaces` fixture lives in conftest.py; this test receives it just by
-naming it as a parameter. Run from the workshop root:
+Rather than hard-coding the pass condition, each interface is compared against
+the `expected_state` fixture loaded from expected_state.yaml. Run from the
+workshop root:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/004_sot/ -v
 """
 
 import pytest

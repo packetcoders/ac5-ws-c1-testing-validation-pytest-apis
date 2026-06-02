@@ -1,9 +1,10 @@
-"""A second test reusing the same fixture, this time checking error counters.
+"""Several tests requesting the same fixture, to make scope visible.
 
-Two tests, one fixture: that is the point of putting `interfaces` in
-conftest.py. Run from the workshop root:
+Each test here names `interfaces`. With the default function scope the fixture
+runs once per test; with session scope it runs once total. Run with -s from the
+workshop root to count how often the setup print fires:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/002_fixtures/002_scope/ -v -s
 """
 
 

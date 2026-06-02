@@ -1,9 +1,10 @@
-"""Fixtures in action: assert every interface is up.
+"""Allure reporting: assert status and annotate the report.
 
-The `interfaces` fixture lives in conftest.py; this test receives it just by
-naming it as a parameter. Run from the workshop root:
+The same source-of-truth status check as 004_sot, now decorated with Allure
+feature and title metadata so the run produces a rich HTML report. Run from the
+workshop root and write the raw results:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/005_reporting --alluredir=allure-results
 """
 
 import allure

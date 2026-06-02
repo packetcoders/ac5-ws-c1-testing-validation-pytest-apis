@@ -1,9 +1,10 @@
-"""A second test reusing the same fixture, this time checking error counters.
+"""Live EOS reporting: assert error counters against state from the device.
 
-Two tests, one fixture: that is the point of putting `interfaces` in
-conftest.py. Run from the workshop root:
+Same counter check as 005_reporting, but `interfaces` now comes from a real
+device over eAPI (see conftest.py) rather than a hard-coded list. Run from the
+workshop root with a populated .env:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/006_eos_reporting --alluredir=allure-results
 """
 import pytest
 import allure

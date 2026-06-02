@@ -1,9 +1,10 @@
-"""A second test reusing the same fixture, this time checking error counters.
+"""Allure reporting: assert error counters and annotate the report.
 
-Two tests, one fixture: that is the point of putting `interfaces` in
-conftest.py. Run from the workshop root:
+The same source-of-truth counter check as 004_sot, now decorated with Allure
+feature and title metadata. Run from the workshop root and write the raw
+results:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/005_reporting --alluredir=allure-results
 """
 import allure
 import pytest

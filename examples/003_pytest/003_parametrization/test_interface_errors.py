@@ -1,9 +1,9 @@
-"""A second test reusing the same fixture, this time checking error counters.
+"""Stacked parametrization: one test per interface, per error counter.
 
-Two tests, one fixture: that is the point of putting `interfaces` in
-conftest.py. Run from the workshop root:
+Two `parametrize` markers multiply together, giving a separate test for every
+interface-and-counter pair. Run from the workshop root:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/003_parametrization/ -v
 """
 import pytest
 

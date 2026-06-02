@@ -1,10 +1,10 @@
 """Example: call eAPI on your own device with raw `requests`.
 
-The sample REST API in basic_rest.py handed back a flat list. A real device
+The sample REST API in 001_basic_rest.py handed back a flat list. A real device
 returns a nested JSON-RPC result instead, which is what motivates the JSONata
 reshaping in 002_jsonata/. Run from the workshop root with a populated .env:
 
-    uv run examples/001_eapi/eapi_call.py
+    uv run examples/001_eapi/002_eapi_call.py
 """
 
 import os

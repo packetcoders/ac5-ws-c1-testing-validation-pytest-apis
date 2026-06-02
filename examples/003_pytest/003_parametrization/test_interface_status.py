@@ -1,9 +1,10 @@
-"""Fixtures in action: assert every interface is up.
+"""Parametrization: one test per interface instead of one loop.
 
-The `interfaces` fixture lives in conftest.py; this test receives it just by
-naming it as a parameter. Run from the workshop root:
+`@pytest.mark.parametrize` runs this test once for each interface name, so a
+failure pins down the exact interface rather than failing the whole loop. Run
+from the workshop root:
 
-    uv run pytest examples/003_pytest/002_fixtures/ -v
+    uv run pytest examples/003_pytest/003_parametrization/ -v
 """
 
 import pytest
