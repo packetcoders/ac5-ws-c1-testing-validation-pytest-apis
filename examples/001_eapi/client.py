@@ -1,15 +1,4 @@
 """A small eAPI client, provided for you to read and reuse.
-
-You do not build this in the session: it wraps the request / auth / parse
-plumbing into one object so the workbooks can focus on testing, not HTTP.
-Read `run()` to see exactly what it does, then import it wherever a device
-call is needed:
-
-    from client import EApiClient
-
-    client = EApiClient("172.29.163.101", username="admin", password="admin")
-    [version] = client.run(["show version"])
-    print(version["hostname"], version["version"])
 """
 
 import requests

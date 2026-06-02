@@ -1,0 +1,10 @@
+interfaces.*.{
+    "name": **.name,
+    "runt_frames": **.runtFrames,
+    "rx_pause": **.rxPause,
+    "fcs_errors": **.fcsErrors,
+    "alignment_errors": **.alignmentErrors,
+    "giant_frames": **.giantFrames,
+    "symbol_errors": **.symbolErrors,
+    "in_discards": **.inDiscards
+}
