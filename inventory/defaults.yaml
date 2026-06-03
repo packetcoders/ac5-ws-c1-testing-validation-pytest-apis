@@ -1,9 +1,0 @@
----
-# Default values applied to every host unless overridden.
-#
-# Credentials are intentionally left blank. final-project/client.py reads
-# DEVICE_USERNAME / DEVICE_PASSWORD from the .env file at runtime, so no
-# secret is ever committed to Git.
-
-username: ""
-password: ""
