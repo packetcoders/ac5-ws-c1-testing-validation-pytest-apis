@@ -28,9 +28,9 @@ By the end of the session you will have built a testing framework using Pytest a
 
 ## Workbooks
 
-- Workbook 001: Pytest Fundamentals
-- Workbook 002: Working with Device REST APIs
-- Workbook 003: Building a Validation Suite
+- Workbook 001: Device APIs with eAPI
+- Workbook 002: Reshaping Responses with JSONata
+- Workbook 003: Testing with Pytest
 
 ## Lab Environment
 

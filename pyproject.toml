@@ -31,11 +31,4 @@ known-first-party = ["client", "fixtures", "state"]
 "workspace/**" = ["F401", "F821", "F841"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
 addopts = "-v"
-markers = [
-    "online: test hits a live device via eAPI",
-    "slow: test is slow to run; selectable or skippable via -m",
-    "bgp: BGP-specific validation tests",
-    "intended_vs_operational: compares intended state to running state",
-]

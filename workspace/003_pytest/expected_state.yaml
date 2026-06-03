@@ -1,0 +1,6 @@
+# Exercise 4: intended state, the source of truth the tests assert against.
+# Answer key: examples/003_pytest/004_sot/expected_state.yaml
+# TODO: set the intended status and error counters.
+status: up
+fcs_errors: 0
+in_discards: 0
