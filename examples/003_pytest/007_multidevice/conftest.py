@@ -24,7 +24,6 @@ import pytest
 import requests
 import urllib3
 from dotenv import load_dotenv
-
 from helpers import load_yaml, pod_devices
 
 # Lab certs are self-signed, so requests warns on every call. Silence it once

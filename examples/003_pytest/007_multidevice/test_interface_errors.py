@@ -30,7 +30,9 @@ import pytest
         "in_discards",
     ],
 )
-def test_no_interface_error(interfaces, interface_name, interface_error, expected_state):
+def test_no_interface_error(
+    interfaces, interface_name, interface_error, expected_state
+):
     interface_data = [i for i in interfaces if i["name"] == interface_name][0]
 
     assert interface_data[interface_error] == expected_state[interface_error]

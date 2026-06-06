@@ -7,7 +7,6 @@ Fill in each TODO, then run from the workshop root:
 A complete worked version is in examples/003_pytest/001_basic/.
 """
 
-
 # TODO 1: write a test function `test_two_plus_two` that asserts 2 + 2 == 4.
 
 

@@ -11,4 +11,3 @@ def test_no_interface_error(interfaces):
     for i in interfaces:
         assert i["fcs_errors"] == 0
         assert i["in_discards"] == 0
-

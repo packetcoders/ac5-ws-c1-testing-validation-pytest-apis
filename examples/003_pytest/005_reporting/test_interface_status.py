@@ -16,7 +16,5 @@ import pytest
 @pytest.mark.parametrize("interface_name", ["Ethernet1", "Ethernet2", "Loopback0"])
 def test_interface_up(interfaces, interface_name, expected_state):
     interface_data = [i for i in interfaces if i["name"] == interface_name][0]
-    
+
     assert interface_data["status"] == expected_state["status"]
-
-

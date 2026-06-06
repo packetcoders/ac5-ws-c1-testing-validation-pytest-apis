@@ -5,6 +5,7 @@ interface-and-counter pair. Run from the workshop root:
 
     uv run pytest examples/003_pytest/003_parametrization/ -v
 """
+
 import pytest
 
 
@@ -13,5 +14,3 @@ import pytest
 def test_no_interface_error(interfaces, interface_name, interface_error):
     interface_data = [i for i in interfaces if i["name"] == interface_name][0]
     assert interface_data[interface_error] == 0
-
-

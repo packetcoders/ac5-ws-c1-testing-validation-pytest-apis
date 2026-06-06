@@ -7,6 +7,7 @@ and pytest injects this return value.
 
 import pytest
 
+
 @pytest.fixture
 def interfaces():
     return [

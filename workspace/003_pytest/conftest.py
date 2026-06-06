@@ -17,8 +17,7 @@ import pytest
 #                    in_discards. Start with function scope, then switch to
 #                    scope="session" in Task 3.
 @pytest.fixture
-def interfaces():
-    ...
+def interfaces(): ...
 
 
 # TODO (Exercise 4): add an `expected_state` fixture that loads expected_state.yaml.

@@ -7,8 +7,9 @@ root with a populated .env:
     uv run pytest examples/003_pytest/006_eos_reporting --alluredir=allure-results
 """
 
-import pytest
 import allure
+import pytest
+
 
 @allure.feature("Interface health")
 @allure.title("{interface_name} is up")
@@ -17,4 +18,3 @@ def test_interface_up(interfaces, interface_name, expected_state):
     interface_data = [i for i in interfaces if i["name"] == interface_name][0]
 
     assert interface_data["status"] == expected_state["status"]
-

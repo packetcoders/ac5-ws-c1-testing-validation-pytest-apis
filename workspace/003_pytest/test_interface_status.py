@@ -22,5 +22,4 @@ Answer keys, by stage:
 #                    literal "up".
 #
 # TODO (Exercise 5): annotate with @allure.feature and @allure.title.
-def test_interface_up(interfaces):
-    ...
+def test_interface_up(interfaces): ...

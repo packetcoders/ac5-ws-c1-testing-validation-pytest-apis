@@ -6,8 +6,10 @@ workshop root with a populated .env:
 
     uv run pytest examples/003_pytest/006_eos_reporting --alluredir=allure-results
 """
-import pytest
+
 import allure
+import pytest
+
 
 @allure.feature("Interface health")
 @allure.title("{interface_name} is error-free")
@@ -24,9 +26,9 @@ import allure
         "in_discards",
     ],
 )
-def test_no_interface_error(interfaces, interface_name, interface_error, expected_state):
+def test_no_interface_error(
+    interfaces, interface_name, interface_error, expected_state
+):
     interface_data = [i for i in interfaces if i["name"] == interface_name][0]
 
     assert interface_data[interface_error] == expected_state[interface_error]
-
-

@@ -14,17 +14,20 @@ EXPECTED_STATE_FILE = Path(__file__).parent / "expected_state.yaml"
 
 print(f"Expected state file path: {EXPECTED_STATE_FILE}")
 
+
 def load_yaml(file_path):
     with open(file_path, "r") as f:
         return yaml.safe_load(f)
+
 
 @pytest.fixture(scope="session")
 def interfaces():
     return [
         {"name": "Ethernet1", "status": "up", "fcs_errors": 0, "in_discards": 1},
         {"name": "Ethernet2", "status": "up", "fcs_errors": 0, "in_discards": 0},
-        {"name": "Loopback0", "status": "up", "fcs_errors": 0, "in_discards": 0}
+        {"name": "Loopback0", "status": "up", "fcs_errors": 0, "in_discards": 0},
     ]
+
 
 @pytest.fixture(scope="session")
 def expected_state():

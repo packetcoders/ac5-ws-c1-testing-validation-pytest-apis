@@ -9,6 +9,7 @@ By the end of this workbook, you will be able to:
 - Run one test against many inputs with `parametrize`.
 - Compare intended state from YAML against operational state.
 - Produce an Allure report and run the suite against a live device.
+- Fan the whole suite across every leaf in your pod with a parametrized fixture.
 
 ## Overview
 
@@ -23,8 +24,8 @@ query from Workbooks 1 and 2. The tests never change in that last step, only
 where their data comes from.
 
 ```
-static list  ->  fixture  ->  parametrize  ->  expected_state.yaml  ->  Allure  ->  live eAPI + JSONata
- Exercise 1     Exercise 2    Exercise 3        Exercise 4              Ex 5         Exercise 6
+static list  ->  fixture  ->  parametrize  ->  expected_state.yaml  ->  Allure  ->  live eAPI + JSONata  ->  whole pod
+ Exercise 1     Exercise 2    Exercise 3        Exercise 4              Ex 5         Exercise 6              Exercise 7
 ```
 
 ## Before You Begin
@@ -551,9 +552,9 @@ def interfaces():
 <summary><b>Solution</b></summary>
 
 Copy the complete `conftest.py`, `expected_state.yaml`, and tests from
-`examples/003_pytest/006_eos_reporting/`. The `INTERFACE_QUERY` there adds
-`"status": lineProtocolStatus` to the Workbook 2 query so the status test works
-against live data.
+`examples/003_pytest/006_eos_reporting/`. The `INTERFACE_QUERY` there is the same
+flattening query you finished in Workbook 2, `status` field included, so the
+status test works against live data.
 
 </details>
 
@@ -585,7 +586,139 @@ Answer key: `examples/003_pytest/006_eos_reporting/`.
 
 </details>
 
+## Exercise 7: Run the Suite Across the Whole Pod
+
+So far the suite tests one device, your own leaf. In the lab the leaves are
+grouped into pods of ten (`pod1` is `leaf1`-`leaf10`, `pod2` is `leaf11`-`leaf20`,
+and so on), and your `STUDENT_ID` places you in one of them. This exercise fans
+the same suite across every leaf in your pod. The trick is to parametrize the
+*fixture* rather than the tests: a parametrized fixture runs once per value, so
+every test that names `interfaces` is automatically repeated for each leaf, with
+no change to a single test function.
+
+Work in `workspace/003_pytest/`. A complete worked version lives under
+`examples/003_pytest/007_multidevice/`.
+
+### Task 1 – Parametrize the fixture over your pod
+
+Two helper files are provided so the lookup is a plain data read: `devices.yaml`
+lists every lab leaf with its `host` and `pod`, and `helpers.py` offers
+`pod_devices(inventory)`, which reads the `pod` off your own device and returns
+every leaf that shares it.
+
+1. Copy `devices.yaml` and `helpers.py` from
+   `examples/003_pytest/007_multidevice/` into your workspace folder.
+
+2. In `conftest.py`, resolve your pod once and parametrize the `interfaces`
+   fixture over it. `params` makes the fixture run once per device, and `ids`
+   labels each run with the leaf name:
+
+```python
+from helpers import load_yaml, pod_devices
+
+DEVICES_FILE = Path(__file__).parent / "devices.yaml"
+POD = pod_devices(load_yaml(DEVICES_FILE))
+
+
+@pytest.fixture(scope="session", params=POD, ids=[device["name"] for device in POD])
+def interfaces(request):
+    device = request.param
+    client = EApiClient(device["host"], DEVICE_USERNAME, DEVICE_PASSWORD)
+    show_interfaces = client.run(["show interfaces"])[0]
+    return jsonatapy.evaluate(INTERFACE_QUERY, show_interfaces)
+```
+
+**Expected output:** no run yet; the fixture now yields one device's records per
+parametrized value instead of a single fixed host.
+
+<details>
+<summary><b>Answer</b></summary>
+
+**Question:** why parametrize the fixture instead of adding a `leaf` parameter to
+every test?
+
+Because the tests should not know there is more than one device. The fixture is
+the single place the data comes from, so parametrizing it fans every test out at
+once, and the test functions stay byte-for-byte identical to Exercise 6.
+
+Answer key: `examples/003_pytest/007_multidevice/conftest.py`.
+
+</details>
+
+### Task 2 – Run the suite across the pod
+
+The test functions are unchanged. Because the fixture is now parametrized, pytest
+crosses each leaf with the existing interface and counter parameters.
+
+1. Run the whole folder:
+
+```bash
+uv run pytest workspace/003_pytest/ -v
+```
+
+**Expected output:** every case is prefixed with its leaf, so a clean pod passes
+once per leaf-and-field combination:
+
+```
+test_interface_status.py::test_interface_up[leaf1-Ethernet1] PASSED
+test_interface_status.py::test_interface_up[leaf2-Ethernet1] PASSED
+test_interface_status.py::test_interface_up[leaf3-Ethernet1] PASSED
+...
+```
+
+<details>
+<summary><b>Answer</b></summary>
+
+**Question:** how many tests run now, and where did they come from?
+
+The count is your earlier per-device total multiplied by the ten leaves in your
+pod. You wrote no new tests: parametrizing the one fixture multiplied the whole
+suite across the pod for free.
+
+Answer key: `examples/003_pytest/007_multidevice/`.
+
+</details>
+
+### Task 3 – Drift the source of truth and re-validate the pod
+
+`expected_state.yaml` is a single shared baseline: the same intended state is
+asserted against every leaf. Editing it re-checks the whole pod in one run, and
+because each leaf reports independently you can read exactly which leaves match.
+
+1. In `expected_state.yaml`, drift the intended status from `up` to `down`. You
+   are changing intent only; the network is untouched.
+
+2. Re-run the suite.
+
+**Expected output:** every leaf's status case now fails, each named on its own
+line, while the counter cases still pass:
+
+```
+test_interface_up[leaf1-Ethernet1] FAILED
+test_interface_up[leaf2-Ethernet1] FAILED
+test_interface_up[leaf3-Ethernet1] FAILED
+...
+```
+
+3. Set the status back to `up` and re-run to confirm a green pod.
+
+<details>
+<summary><b>Answer</b></summary>
+
+**Question:** why did every leaf fail, not just one?
+
+Because the baseline is shared, so drifting it drifts the intent for the whole
+pod at once. Each leaf is still judged on its own line, so if a single leaf ever
+drifted *for real* against an unchanged baseline, only that leaf's cases would go
+red, the rest staying green. That is the per-device isolation parametrize buys
+you, now applied across the fleet.
+
+Answer key: `examples/003_pytest/007_multidevice/expected_state.yaml`.
+
+</details>
+
 > 🎉 **CONGRATULATIONS!**
 > You have built a pytest validation suite that reads live network state over an
-> API, reshapes it with JSONata, and asserts operational state against an
-> intended source of truth, with an Allure report ready for CI.
+> API, reshapes it with JSONata, asserts operational state against an intended
+> source of truth, and fans across every leaf in your pod, with an Allure report
+> ready for CI.

@@ -1,5 +1,6 @@
 interfaces.*.{
     "name": **.name,
+    "status": lineProtocolStatus,
     "runt_frames": **.runtFrames,
     "rx_pause": **.rxPause,
     "fcs_errors": **.fcsErrors,

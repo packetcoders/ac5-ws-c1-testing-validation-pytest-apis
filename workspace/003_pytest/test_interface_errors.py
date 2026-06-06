@@ -21,5 +21,4 @@ Answer keys, by stage:
 # TODO (Exercise 4): compare against the `expected_state` fixture.
 #
 # TODO (Exercise 5): annotate with @allure.feature and @allure.title.
-def test_no_interface_error(interfaces):
-    ...
+def test_no_interface_error(interfaces): ...

@@ -10,8 +10,9 @@ the "Setting up" print fire:
 
 import pytest
 
+
 @pytest.fixture
-#@pytest.fixture(scope="session")
+# @pytest.fixture(scope="session")
 def interfaces():
     print("Setting up interfaces fixture")
     return [

@@ -14,4 +14,3 @@ import pytest
 def test_interface_up(interfaces, interface_name):
     interface_data = [i for i in interfaces if i["name"] == interface_name][0]
     assert interface_data["status"] == "up"
-
