@@ -29,7 +29,7 @@ By the end of the session you will have built a testing framework using Pytest a
 ## Workbooks
 
 - Workbook 001: Device APIs with eAPI
-- Workbook 002: Reshaping Responses with JSONata
+- Workbook 002: Reshaping Data with JSONata
 - Workbook 003: Testing with Pytest
 
 ## Lab Environment

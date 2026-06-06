@@ -1,4 +1,4 @@
-# Workbook 2: Reshaping Responses with JSONata
+# Workbook 2: Reshaping Data with JSONata
 
 ## Learning Objectives
 
@@ -47,13 +47,12 @@ The JSONata validator loads JSON on the left, takes an expression in the middle,
 and shows the evaluated result on the right. Drafting the query here means you
 see each change immediately before committing it to Python.
 
-Open the validator:
+Open the validator, pre-loaded with the sample `show interfaces` response:
 
-`https://tools.packetcoders.io/jsonata-validator`
+> https://tools.packetcoders.io/jsonata-validator/s_b87df172/
 
-Load the sample response by pasting the contents of
-`examples/002_jsonata/interfaces.json` into the input pane. Its shape is a single
-`interfaces` object keyed by interface name:
+The input pane already holds the sample. Its shape is a single `interfaces`
+object keyed by interface name:
 
 ```json
 {
