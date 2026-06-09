@@ -36,8 +36,9 @@ response.json()["interfaces"]   response.json()["result"][0]
 - Open a session to your lab environment directly within your browser.
 - The workshop repository is already cloned, with the Python environment
   installed via `uv`.
-- The `.env` file is pre-seeded with your `STUDENT_ID`, `DEVICE_USERNAME`, and
-  `DEVICE_PASSWORD`. Your device is reachable at `172.29.165.<STUDENT_ID>`.
+- Your `STUDENT_ID`, `DEVICE_USERNAME`, and `DEVICE_PASSWORD` are injected into
+  your session as environment variables (see `.env.example` for the full list).
+  Your device is reachable at `172.29.165.<STUDENT_ID>`.
 - Start an interactive Python session from the repo root:
 
 ```bash
@@ -140,7 +141,7 @@ exercise runs entirely in the browser, no Python.
 The Explorer lives on the device itself. Open it in the lab browser at
 `https://172.29.165.<STUDENT_ID>/explorer.html` (accept the self-signed
 certificate warning) and log in with the `DEVICE_USERNAME` and `DEVICE_PASSWORD`
-from your `.env`.
+from your session environment.
 
 1. In the command box, enter a single command:
 

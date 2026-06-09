@@ -33,8 +33,9 @@ static list  ->  fixture  ->  parametrize  ->  expected_state.yaml  ->  Allure  
 - Open a session to your lab environment directly within your browser.
 - The workshop repository is already cloned, with the Python environment
   installed via `uv`.
-- The `.env` file is pre-seeded with your `STUDENT_ID`, `DEVICE_USERNAME`, and
-  `DEVICE_PASSWORD`. Your device is reachable at `172.29.165.<STUDENT_ID>`.
+- Your `STUDENT_ID`, `DEVICE_USERNAME`, and `DEVICE_PASSWORD` are injected into
+  your session as environment variables (see `.env.example` for the full list).
+  Your device is reachable at `172.29.165.<STUDENT_ID>`.
 - You work in `workspace/003_pytest/`, filling in the stub files. A complete
   worked version of every stage lives under `examples/003_pytest/`.
 - Run all commands from the repo root.
