@@ -38,7 +38,8 @@ response.json()["interfaces"]   response.json()["result"][0]
   installed via `uv`.
 - Your `STUDENT_ID`, `DEVICE_USERNAME`, and `DEVICE_PASSWORD` are injected into
   your session as environment variables (see `.env.example` for the full list).
-  Your device is reachable at `172.29.165.<STUDENT_ID>`.
+  Your device is reachable at `172.29.165.<STUDENT_ID>`. To view the values set
+  in your session, run `env | grep -E "STUDENT|DEVICE"` from the repo root.
 - Start an interactive Python session from the repo root:
 
 ```bash

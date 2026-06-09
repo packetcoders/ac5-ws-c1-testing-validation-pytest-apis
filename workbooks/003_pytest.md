@@ -35,7 +35,8 @@ static list  ->  fixture  ->  parametrize  ->  expected_state.yaml  ->  Allure  
   installed via `uv`.
 - Your `STUDENT_ID`, `DEVICE_USERNAME`, and `DEVICE_PASSWORD` are injected into
   your session as environment variables (see `.env.example` for the full list).
-  Your device is reachable at `172.29.165.<STUDENT_ID>`.
+  Your device is reachable at `172.29.165.<STUDENT_ID>`. To view the values set
+  in your session, run `env | grep -E "STUDENT|DEVICE"` from the repo root.
 - You work in `workspace/003_pytest/`, filling in the stub files. A complete
   worked version of every stage lives under `examples/003_pytest/`.
 - Run all commands from the repo root.
