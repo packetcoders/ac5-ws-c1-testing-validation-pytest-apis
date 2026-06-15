@@ -38,7 +38,8 @@ interfaces:                      interfaces.*.{             [
   installed via `uv`.
 - A saved sample `show interfaces` response lives at
   `examples/002_jsonata/interfaces.json`. Exercise 1 runs entirely in the
-  browser; Exercise 2 uses a terminal.
+  browser; Exercise 2 uses a terminal: open the menu (hamburger **☰**,
+  top-left) → **Terminal** → **New Terminal**.
 - The finished query lives at `examples/002_jsonata/query.jsonata`.
 
 ## Exercise 1: Flatten a Response in the Validator

@@ -6,7 +6,6 @@ By the end of this workbook, you will be able to:
 
 - Make a REST `GET` call with `requests` and parse the JSON response.
 - Read the outcome of a call from its HTTP status code.
-- Explore eAPI in the browser with the Command API Explorer.
 - Build a JSON-RPC request and `POST` a `show` command to Arista eAPI.
 - Pull a field out of the nested eAPI `result`.
 - Reuse a provided eAPI client and handle a failed call gracefully.
@@ -16,10 +15,9 @@ By the end of this workbook, you will be able to:
 Every test in this session reads device state, and every device exposes that
 state through an API. This workbook starts at the network's edge: a plain REST
 `GET` against a public sample endpoint so you see a request and response end to
-end, then the real thing, Arista's eAPI, against your own lab leaf. You first
-meet eAPI in the browser through the Command API Explorer, then build the same
-request in Python. eAPI is a JSON-RPC interface: you `POST` a list of CLI commands
-and get back structured JSON instead of screen-scraped text. The workbook closes
+end, then the real thing, Arista's eAPI, against your own lab leaf. eAPI is a
+JSON-RPC interface: you `POST` a list of CLI commands and get back structured
+JSON instead of screen-scraped text. The workbook closes
 with a small client class that wraps the call, the same client every later
 workbook reuses.
 
@@ -40,7 +38,8 @@ response.json()["interfaces"]   response.json()["result"][0]
   your session as environment variables (see `.env.example` for the full list).
   Your device is reachable at `172.29.165.<STUDENT_ID>`. To view the values set
   in your session, run `env | grep -E "STUDENT|DEVICE"` from the repo root.
-- Start an interactive Python session from the repo root:
+- Open a terminal: open the menu (hamburger **☰**, top-left) → **Terminal** →
+  **New Terminal**, then start an interactive Python session from the repo root:
 
 ```bash
 task shell
@@ -128,107 +127,13 @@ rprint(interfaces[0]["name"])
 
 </details>
 
-## Exercise 2: Explore eAPI in the Browser
-
-Before building the request in Python, it helps to see it. EOS ships a built-in
-Command API Explorer: a web page on the device that runs eAPI commands for you
-and shows both the JSON-RPC request it sends and the response it gets back.
-Reading that request is the fastest way to understand the payload you build by
-hand next, and the response previews the nested shape Workbook 2 flattens. This
-exercise runs entirely in the browser, no Python.
-
-### Task 1 – Run a command in the Command API Explorer
-
-The Explorer lives on the device itself. Open it in the lab browser at
-`https://172.29.165.<STUDENT_ID>/explorer.html` (accept the self-signed
-certificate warning) and log in with the `DEVICE_USERNAME` and `DEVICE_PASSWORD`
-from your session environment.
-
-1. In the command box, enter a single command:
-
-```
-show interfaces
-```
-
-2. Leave the format set to `json` and submit the request.
-
-**Expected output:** the response pane fills with a JSON-RPC reply: a `result`
-list whose one entry holds an `interfaces` object keyed by interface name
-(`Ethernet1`, `Management0`, ...).
-
-<details>
-<summary><b>Answer</b></summary>
-
-**Question:** what is the Explorer actually doing when you click submit?
-
-It `POST`s a JSON-RPC body to `/command-api` on the device, the same endpoint you
-will call from Python, and renders the JSON it gets back. The GUI is a thin
-front-end over the exact API your tests use.
-
-</details>
-
-### Task 2 – Read the request the Explorer sends
-
-The Explorer shows the request body it sends, not just the response. That body is
-the JSON-RPC payload you build by hand in the next exercise.
-
-1. Find the request viewer and read its shape:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "method": "runCmds",
-  "params": {"version": 1, "cmds": ["show interfaces"], "format": "json"},
-  "id": 1
-}
-```
-
-2. Note the three parts you will set yourself: `method` is always `runCmds`, the
-   `cmds` list carries the commands, and `format` chooses `json` or `text`.
-
-<details>
-<summary><b>Answer</b></summary>
-
-**Question:** where will you see this body again?
-
-It is the `PAYLOAD` dictionary from the next exercise, field for field. The
-Explorer assembles it for you from the command box; in Python you build the same
-dictionary and `POST` it yourself.
-
-</details>
-
-### Task 3 – Find a counter buried in the response
-
-The response is realistic device output: deeply nested and keyed by interface
-name. Drilling into one counter shows why a test cannot assert against this shape
-directly.
-
-1. In the response, expand one interface down to a counter:
-   `result` → `[0]` → `interfaces` → `Ethernet1` → `interfaceCounters` →
-   `inputErrorsDetail` → `fcsErrors`.
-
-2. Note how far down the value sits, and that the interface name is a dictionary
-   *key*, not a field.
-
-<details>
-<summary><b>Answer</b></summary>
-
-**Question:** why is this shape awkward to test?
-
-A test wants a flat record per interface with `fcs_errors` at the top, but here
-the value is several levels down and the interface name is a key rather than a
-field. Workbook 2 uses JSONata to flatten exactly this response into one record
-per interface, renaming the camelCase counters as it goes.
-
-</details>
-
-## Exercise 3: Call eAPI on Your Device
+## Exercise 2: Call eAPI on Your Device
 
 The sample endpoint handed back a flat list. A real device returns a nested
-JSON-RPC result instead. You just ran this command through the Command API
-Explorer; now you build the same JSON-RPC request in Python. Arista's eAPI listens
-for an HTTPS `POST` at `/command-api`; the body names the CLI commands to run and
-the format to return them in. This exercise calls your own lab leaf.
+JSON-RPC result instead. Now you build the JSON-RPC request in Python. Arista's
+eAPI listens for an HTTPS `POST` at `/command-api`; the body names the CLI
+commands to run and the format to return them in. This exercise calls your own
+lab leaf.
 
 ### Task 1 – POST a show command
 
@@ -347,7 +252,7 @@ unreachable host are both reported instead of crashing the suite.
 
 </details>
 
-## Exercise 4: Reuse the Provided eAPI Client
+## Exercise 3: Reuse the Provided eAPI Client
 
 Building that payload by hand every time is noise. A small client class is
 provided so the rest of the session stays focused on testing, not plumbing. You

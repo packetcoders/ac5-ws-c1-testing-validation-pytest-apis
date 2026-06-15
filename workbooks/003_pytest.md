@@ -37,9 +37,15 @@ static list  ->  fixture  ->  parametrize  ->  expected_state.yaml  ->  Allure  
   your session as environment variables (see `.env.example` for the full list).
   Your device is reachable at `172.29.165.<STUDENT_ID>`. To view the values set
   in your session, run `env | grep -E "STUDENT|DEVICE"` from the repo root.
+- Open a terminal: open the menu (hamburger **☰**, top-left) → **Terminal** →
+  **New Terminal**.
 - You work in `workspace/003_pytest/`, filling in the stub files. A complete
   worked version of every stage lives under `examples/003_pytest/`.
 - Run all commands from the repo root.
+- Exercise 5 builds an HTML report you view in the editor. Install the
+  **Live Preview** extension once so you can open it: click the **Extensions**
+  icon in the left sidebar (or menu **☰** → **View** → **Extensions**), search
+  for `ms-vscode.live-server`, and click **Install**.
 
 > **Note:** pytest discovers any file named `test_*.py` and runs any function in
 > it named `test_*`. A fixture defined in `conftest.py` is handed to any test in
@@ -486,7 +492,12 @@ uv run pytest workspace/003_pytest/ --alluredir=allure-results
 allure generate allure-results -o allure-report --single-file --clean
 ```
 
-2. Open `allure-report/index.html` in the lab browser.
+2. Open the report in the editor with the Live Preview extension (installed in
+   **Before You Begin**): in the **Explorer**, click `allure-report/index.html`
+   to open it, then click the **Show Preview** icon at the top-right of the
+   editor (a magnifying glass over a page). The rendered report opens in a
+   preview tab beside the file. (You can also right-click `index.html` →
+   **Show Preview**.)
 
 **Expected output:** an HTML report grouping cases under "Interface health", each
 named from its title, with the seeded Ethernet1 failure shown in red.
